@@ -1,0 +1,14 @@
+.profile__button {
+  grid-area: button;
+  max-width: 24px;
+  max-height: 24px;
+  background-color: #000000;
+  align-self: center;
+  border: 1px solid white;
+}
+@media screen and (max-width: 670px) {
+  .profile__button {
+    align-self: start;
+    margin-top: 5px;
+  } 
+}
