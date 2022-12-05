@@ -1,4 +1,4 @@
-.profile__profileInfo {
+.profile__profile-info {
   max-width: 336px;
   margin-left: 30px;
   padding: 20px 0;
@@ -8,16 +8,16 @@
   grid-template-areas:
   "name button"
   "description description";
-  gap: 9px 16px;
+  gap: 9px 19px;
 }
 @media screen and (max-width: 670px) {
-  .profile__profileInfo {
+  .profile__profile-info {
     max-width: 282px;
     padding: 0;
-    margin: 26px 0 0 39px;
+    margin: 26px 0 0 24px;
     grid-template-areas:
     "name button"
     "description button";
-    gap: 10px 14px;
+    gap: 8px 12px;
   } 
 }

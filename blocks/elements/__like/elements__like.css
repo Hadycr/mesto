@@ -3,7 +3,7 @@
   height: 19px;
   width: 22px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: bottom;
   box-sizing: border-box;
   border: none;
