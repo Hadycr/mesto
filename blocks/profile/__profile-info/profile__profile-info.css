@@ -9,6 +9,7 @@
   "name button"
   "description description";
   gap: 9px 19px;
+  box-sizing: border-box;
 }
 @media screen and (max-width: 670px) {
   .profile__profile-info {

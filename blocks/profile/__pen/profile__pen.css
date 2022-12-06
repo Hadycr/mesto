@@ -1,10 +1,10 @@
 .profile__pen {
-  max-width: 10px;
-  max-height: 10px;
-}
-@media screen and (max-width: 670px) {
-  .profile__pen {
-    width: 10px;
-    height: 10px; 
-  } 
+  background-image: url('../../../img/pen.svg');
+  width: 10px;
+  height: 10px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 auto;
 }
