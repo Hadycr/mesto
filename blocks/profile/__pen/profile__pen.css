@@ -1,10 +1,6 @@
 .profile__pen {
-  background-image: url('../../../img/pen.svg');
-  width: 10px;
-  height: 10px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  box-sizing: border-box;
-  padding: 0;
+  max-width: 10px;
+  max-height: 10px;
   margin: 0 auto;
+  align-self: center;
 }
