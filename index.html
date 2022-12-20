@@ -24,50 +24,7 @@
         <button class="profile__add-button link" type="button"><img class="profile__plus" src="./img/plus.svg" alt="Кнопка добавления"></button> 
       </section>
       <section class="elements">
-        <ul class="elements__items">
-          <!-- <li class="elements__item">
-            <img class="elements__img" src="./img/kirill-pershin-1088404-unsplash.jpg" alt="Фотография Карачаевск">
-            <div class="elements__description">
-              <h2 class="elements__title">Карачаевск</h2>
-              <button class="elements__like link" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__img" src="./img/kirill-pershin-1404681-unsplash.jpg" alt="Фотография Гора Эльбрус">
-            <div class="elements__description">
-              <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like link" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__img" src="./img/kirill-pershin-1556355-unsplash.jpg" alt="Фотография Домбай">
-            <div class="elements__description">
-              <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like link" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__img" src="./img/kirill-pershin-1404681-unsplash.jpg" alt="Фотография Гора Эльбрус">
-            <div class="elements__description">
-              <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like link" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__img" src="./img/kirill-pershin-1556355-unsplash.jpg" alt="Фотография Домбай">
-            <div class="elements__description">
-              <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like link" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img class="elements__img" src="./img/kirill-pershin-1088404-unsplash.jpg" alt="Фотография Карачаево-Черкессия">
-            <div class="elements__description">
-              <h2 class="elements__title">Карачаево-Черкессия</h2>
-              <button class="elements__like link" type="button"></button>
-            </div>
-          </li> -->
-        </ul>     
+        <ul class="elements__items"></ul>     
       </section>   
     </main>
     <footer class="footer">
@@ -83,18 +40,27 @@
           <button class="popup__save link" type="submit">Сохранить</button>
         </form>
       </div>
-   </div>
-   <div class="popup popup_place">
-    <div class="popup__container">
-      <button class="popup__closed popup__closed-place link" type="button"></button>
-      <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form popup__form-img" method="get" name="form">
-        <input class="popup__input popup__input-title popup__input_type_name" value="Название" type="text" name="name" >
-        <input class="popup__input popup__input-link popup__input_type_profession" value="Ссылка на картинку" name="profession" >
-        <button class="popup__save link" type="submit">Создать</button>
-      </form>
     </div>
- </div> 
+    <div class="popup popup_place">
+      <div class="popup__container">
+        <button class="popup__closed popup__closed-place link" type="button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form popup__form-img" method="get" name="form">
+          <input class="popup__input popup__input-title popup__input_type_name" value="Название" type="text" name="name" >
+          <input class="popup__input popup__input-link popup__input_type_profession" value="Ссылка на картинку" name="profession" >
+          <button class="popup__save link" type="submit">Создать</button>
+        </form>
+      </div>
+   </div> 
+    <div class="popup popup_picture">
+      <div class="popup__container-photo">
+        <button class="popup__closed popup__closed-img link" type="button"></button>
+        <div class="popup__img">
+          <img class="popup__photo" src="" alt="Фотография">
+          <h2 class="popup__title-photo">Новое место</h2> 
+        </div>
+      </div>
+    </div> 
   </div>
   <template id = "elements__item-template">
     <li class="elements__item">
