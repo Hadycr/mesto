@@ -45,10 +45,6 @@ const profileAddButton = document.querySelector('.profile__add-button');
 const popupPicture = document.querySelector('.popup_picture');
 const popupClosedImg = document.querySelector('.popup__closed-img');
 
-
-/*const elementOfImg = document.querySelector('.element__img');*/
-
-
 const creatCard = (cardLink, cardName) => {
   const template = document.querySelector('#elements__item-template');
   const card = template.content.cloneNode(true);
@@ -69,9 +65,11 @@ const creatCard = (cardLink, cardName) => {
  });
   return card;
 }
+
 const addCard = (cardLink, cardName) => {
   elementsContainer.prepend(creatCard(cardLink, cardName));
 }
+
 initialCards.forEach((card) => {
   addCard(card.link, card.name);
 })
@@ -79,6 +77,7 @@ initialCards.forEach((card) => {
 const popupOpened = (popup) => {
   popup.classList.add('popup_opened');
 }
+
 const popupClosedFunc = (popup) => {
   popup.classList.remove('popup_opened');
 }
@@ -103,6 +102,7 @@ profileButton.addEventListener('click', () => {
   popupProfession.textContent = profileDescription.value;
   popupOpened(popupDescription);
 });
+
 formElement.addEventListener('submit', handleFormSubmit); 
 popupClosed.addEventListener('click', () => {
   popupClosedFunc(popupDescription);
@@ -111,6 +111,7 @@ popupClosed.addEventListener('click', () => {
 profileAddButton.addEventListener('click', () => {
   popupOpened(popupPlace);
 }); 
+
 formElementImg.addEventListener('submit', AddNewImg); 
 popupClosedPlace.addEventListener('click', () => {
   popupClosedFunc(popupPlace);
