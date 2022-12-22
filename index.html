@@ -30,29 +30,29 @@
     <footer class="footer">
       <p class="footer__name">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_description">
+    <div class="popup popup_type_description">
       <div class="popup__container">
         <button class="popup__closed popup__closed-description link" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form popup__form-description" method="get" name="form">
-          <input class="popup__input popup__input-name popup__input_type_name" value="Жак-Ив Кусто" type="text" name="name" >
-          <input class="popup__input popup__input-profession popup__input_type_profession" value="Исследователь океана" name="profession" >
+          <input class="popup__input popup__input-name popup__input_type_name" placeholder="Жак-Ив Кусто" value="" type="text" name="name" >
+          <input class="popup__input popup__input-profession popup__input_type_profession" placeholder="Исследователь океана" value="" name="profession" >
           <button class="popup__save link" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="popup popup_place">
+    <div class="popup popup_type_place">
       <div class="popup__container">
         <button class="popup__closed popup__closed-place link" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form popup__form-img" method="get" name="form">
-          <input class="popup__input popup__input-title popup__input_type_name" value="Название" type="text" name="name" >
-          <input class="popup__input popup__input-link popup__input_type_profession" value="Ссылка на картинку" name="profession" >
+          <input class="popup__input popup__input-title popup__input_type_name" placeholder="Название" value="" type="text" name="name" >
+          <input class="popup__input popup__input-link popup__input_type_profession" placeholder="Ссылка на картинку" value="" name="profession" >
           <button class="popup__save link" type="submit">Создать</button>
         </form>
       </div>
    </div> 
-    <div class="popup popup_picture">
+    <div class="popup popup_type_picture">
       <div class="popup__container-photo">
         <button class="popup__closed popup__closed-img link" type="button"></button>
         <div class="popup__img">
@@ -63,7 +63,7 @@
     </div> 
   </div>
   <template id = "elements__item-template">
-    <li class="elements__item">
+    <li class="element__item">
       <img class="elements__img" src="#" alt="Фотография">
       <button class="elements__trash link" type="button"></button>
       <div class="elements__description">
@@ -72,6 +72,7 @@
       </div>
     </li>
   </template>
+  <script src="./scripts/card.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
