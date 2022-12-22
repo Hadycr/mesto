@@ -10,10 +10,10 @@ const elementsContainer = document.querySelector('.elements__items');
 const popupDescription = document.querySelector('.popup_type_description');
 const popupClosedPlace = document.querySelector('.popup__closed-place');
 const formElementImg =  document.querySelector('.popup__form-img');
-const popupNameImg = document.querySelector('.popup__input-title');
-const popupLinks = document.querySelector('.popup__input-link');
+const placePopupTitleInput = document.querySelector('.popup__input-title'); 
+const placePopupLinksInput = document.querySelector('.popup__input-link'); 
 const popupPlace = document.querySelector('.popup_type_place');
-const elementImg = document.querySelector('.elements__img');
+const elementImg = document.querySelector('.element__img');
 const profileAddButton = document.querySelector('.profile__add-button');
 const popupPicture = document.querySelector('.popup_type_picture');
 const popupPicturePhoto = popupPicture.querySelector('.popup__photo');
@@ -24,17 +24,17 @@ const template = document.querySelector('#elements__item-template');
 
 const creatCard = (cardLink, cardName) => {
   const card = template.content.cloneNode(true);
-  const elementImgOfCard = card.querySelector('.elements__img');
+  const elementImgOfCard = card.querySelector('.element__img');
   elementImgOfCard.src = cardLink;
   elementImgOfCard.alt = cardName;
-  card.querySelector('.elements__title').textContent  = cardName;
-  card.querySelector('.elements__trash').addEventListener('click', (evt) => {
+  card.querySelector('.element__title').textContent  = cardName;
+  card.querySelector('.element__trash').addEventListener('click', (evt) => {
      evt.target.closest('.element__item').remove(); 
   })
-  card.querySelector('.elements__like').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('elements__like_dark'); 
+  card.querySelector('.element__like').addEventListener('click', (evt) => {
+    evt.target.classList.toggle('element__like_dark'); 
  })
- card.querySelector('.elements__img').addEventListener('click', (evt) => {
+ card.querySelector('.element__img').addEventListener('click', (evt) => {
   popupPicturePhoto.src = cardLink;
   popupPicturePhoto.alt = cardName;
   popupPictureTitle.textContent = cardName;
@@ -68,8 +68,8 @@ const handleFormSubmit = (evt) => {
 
 const addNewImg = (evt) => {
   evt.preventDefault();
-  const cardLink = popupLinks.value;
-  const cardName = popupNameImg.value;
+  const cardLink = placePopupLinksInput.value;
+  const cardName = placePopupTitleInput.value;
   addCard (cardLink, cardName);
   closePopup(popupPlace); 
 }
