@@ -72,11 +72,12 @@ const addNewImg = (evt) => {
   const cardName = placePopupTitleInput.value;
   addCard (cardLink, cardName);
   closePopup(popupPlace); 
+  formElementImg.reset();
 }
 
 profileButton.addEventListener('click', () => {
-  profilePopupNameInput.textContent = profileName.value;
-  profilePopupProfessionInput.textContent = profileDescription.value;
+  profilePopupNameInput.value  = profileName.textContent;
+  profilePopupProfessionInput.value = profileDescription.textContent;
   openPopup(popupDescription);
 });
 
