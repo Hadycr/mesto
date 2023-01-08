@@ -1,3 +1,12 @@
+const validation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}; 
+
 const profilePopupNameInput = document.querySelector('.popup__input-name');
 const profilePopupProfessionInput = document.querySelector('.popup__input-profession');
 const popupClosed = document.querySelector('.popup__closed-description');
@@ -20,6 +29,7 @@ const popupPicturePhoto = popupPicture.querySelector('.popup__photo');
 const popupPictureTitle = popupPicture.querySelector('.popup__title-photo');
 const popupClosedImg = document.querySelector('.popup__closed-img');
 const template = document.querySelector('#elements__item-template');
+const pageContainer = document.querySelector('.page__container');
 
 
 const creatCard = (cardLink, cardName) => {
@@ -51,12 +61,22 @@ initialCards.forEach((card) => {
   addCard(card.link, card.name);
 })
 
+const closePopupEsc = (evt) => {
+  const openPopup = document.querySelector('.popup_opened');
+  console.log(evt);
+  if (evt.key === 'Escape') {
+    closePopup(openPopup); 
+    }
+}
+
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  popup.addEventListener('keydown', closePopupEsc);
 }
 
 const closePopup = (popup) => { 
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('keydown', closePopupEsc);
 }
 
 const handleFormSubmit = (evt) => {
@@ -73,6 +93,12 @@ const addNewImg = (evt) => {
   addCard (cardLink, cardName);
   closePopup(popupPlace); 
   formElementImg.reset();
+}
+
+const closePopupOverlay = (evt) => {
+  if (evt.target === evt.currentTarget) {
+  closePopup(evt.target)
+  }
 }
 
 profileButton.addEventListener('click', () => {
@@ -99,3 +125,8 @@ popupClosedImg.addEventListener('click', () => {
   closePopup(popupPicture);
 });
 
+popupDescription.addEventListener('click', closePopupOverlay);
+popupPlace.addEventListener('click', closePopupOverlay);
+popupPicture.addEventListener('click', closePopupOverlay);
+
+enableValidation(validation);
