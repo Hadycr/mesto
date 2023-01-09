@@ -52,3 +52,13 @@ const enableValidation = (validation) => {
     setEventListeners (formElement, validation);
   });
 }
+
+const hideErrors = (popup, validation) => {
+  const formList = Array.from(popup.querySelectorAll(validation.formSelector));
+  formList.forEach((formElement) => {
+    const inputList = Array.from(formElement.querySelectorAll(validation.inputSelector));
+    inputList.forEach((inputElement) => {
+      hideInputError(formElement, inputElement, validation);
+    })
+  })
+}

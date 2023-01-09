@@ -10,7 +10,6 @@ const validation = {
 const profilePopupNameInput = document.querySelector('.popup__input-name');
 const profilePopupProfessionInput = document.querySelector('.popup__input-profession');
 const popupClosed = document.querySelector('.popup__closed-description');
-const popup = document.querySelector('.popup');
 const profileButton = document.querySelector('.profile__button');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
@@ -22,17 +21,15 @@ const formElementImg =  document.querySelector('.popup__form-img');
 const placePopupTitleInput = document.querySelector('.popup__input-title'); 
 const placePopupLinksInput = document.querySelector('.popup__input-link'); 
 const popupPlace = document.querySelector('.popup_type_place');
-const elementImg = document.querySelector('.element__img');
 const profileAddButton = document.querySelector('.profile__add-button');
 const popupPicture = document.querySelector('.popup_type_picture');
 const popupPicturePhoto = popupPicture.querySelector('.popup__photo');
 const popupPictureTitle = popupPicture.querySelector('.popup__title-photo');
 const popupClosedImg = document.querySelector('.popup__closed-img');
 const template = document.querySelector('#elements__item-template');
-const pageContainer = document.querySelector('.page__container');
 
 
-const creatCard = (cardLink, cardName) => {
+const createCard = (cardLink, cardName) => {
   const card = template.content.cloneNode(true);
   const elementImgOfCard = card.querySelector('.element__img');
   elementImgOfCard.src = cardLink;
@@ -54,7 +51,7 @@ const creatCard = (cardLink, cardName) => {
 }
 
 const addCard = (cardLink, cardName) => {
-  elementsContainer.prepend(creatCard(cardLink, cardName));
+  elementsContainer.prepend(createCard(cardLink, cardName));
 }
 
 initialCards.forEach((card) => {
@@ -63,20 +60,21 @@ initialCards.forEach((card) => {
 
 const closePopupEsc = (evt) => {
   const openPopup = document.querySelector('.popup_opened');
-  console.log(evt);
   if (evt.key === 'Escape') {
     closePopup(openPopup); 
-    }
+  }
 }
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  popup.addEventListener('keydown', closePopupEsc);
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 const closePopup = (popup) => { 
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', closePopupEsc);
+  document.removeEventListener('keydown', closePopupEsc);
+  formElementImg.reset();
+  hideErrors(popup, validation);
 }
 
 const handleFormSubmit = (evt) => {
@@ -93,11 +91,14 @@ const addNewImg = (evt) => {
   addCard (cardLink, cardName);
   closePopup(popupPlace); 
   formElementImg.reset();
+  
+  evt.submitter.classList.add('popup__save_disabled'); 
+  evt.submitter.disabled = true;
 }
 
 const closePopupOverlay = (evt) => {
   if (evt.target === evt.currentTarget) {
-  closePopup(evt.target)
+    closePopup(evt.target);
   }
 }
 
