@@ -27,7 +27,7 @@ const popupPicturePhoto = popupPicture.querySelector('.popup__photo');
 const popupPictureTitle = popupPicture.querySelector('.popup__title-photo');
 const popupClosedImg = document.querySelector('.popup__closed-img');
 const template = document.querySelector('#elements__item-template');
-
+const buttonOfPopup = document.querySelector('.popup__save');
 
 const createCard = (cardLink, cardName) => {
   const card = template.content.cloneNode(true);
@@ -62,7 +62,7 @@ const closePopupEsc = (evt) => {
   const openPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
     closePopup(openPopup); 
-  }
+  } 
 }
 
 const openPopup = (popup) => {
@@ -92,8 +92,7 @@ const addNewImg = (evt) => {
   closePopup(popupPlace); 
   formElementImg.reset();
   
-  evt.submitter.classList.add('popup__save_disabled'); 
-  evt.submitter.disabled = true;
+  disableSubmitButton (buttonOfPopup, validation);
 }
 
 const closePopupOverlay = (evt) => {
@@ -106,6 +105,7 @@ profileButton.addEventListener('click', () => {
   profilePopupNameInput.value  = profileName.textContent;
   profilePopupProfessionInput.value = profileDescription.textContent;
   openPopup(popupDescription);
+  enableButtonState (buttonOfPopup, validation);
 });
 
 formElement.addEventListener('submit', handleFormSubmit); 
@@ -115,6 +115,8 @@ popupClosed.addEventListener('click', () => {
 
 profileAddButton.addEventListener('click', () => {
   openPopup(popupPlace);
+  const button = popupPlace.querySelector('.popup__save');
+  disableSubmitButton (button, validation);
 }); 
 
 formElementImg.addEventListener('submit', addNewImg); 
