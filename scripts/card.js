@@ -16,13 +16,8 @@ class Card {
     return cardElement;
   }
 
-  _removeCard() {
-    this._element.remove();
-    this._element = null;
-  }
-
   _addLike() {
-   this._element.classList.toggle('.element__like_dark'); 
+    this._likeButton.classList.toggle('element__like_dark'); 
   }
 
   _openPopup() {
@@ -33,21 +28,21 @@ class Card {
   }
 
   _setEventListeners() {
-    this._trashButton = this._element.querySelector('.element__trash');
-    this._trashButton.addEventListener('click', () => {
-      this._removeCard();
-  })
+    const trashButton = this._element.querySelector('.element__trash');
+    trashButton.addEventListener('click', (evt) => {
+      evt.target.closest(".element__item").remove();
+    })
 
     this._likeButton = this._element.querySelector('.element__like');
     this._likeButton.addEventListener('click', () => {
       this._addLike();
-  })
+    })
 
     const cardImage = this._element.querySelector('.element__img');
     cardImage.addEventListener('click', () => {
       this._openPopup();
-  })
-}
+    })
+  }
 
   generateCard() {
     this._element = this._getTemplate();

@@ -1,59 +1,33 @@
 import Card from './Card.js';
 import {FormValidator, validation} from './FormValidator.js';
 import {initialCards} from './cards.js';
-import {openPopup, closePopupEsc, closePopup, popupPicture, popupPicturePhoto, popupPictureTitle} from './utils.js';
-
-
+import {openPopup, closePopup, popupPicture} from './utils.js';
 
 const profilePopupNameInput = document.querySelector('.popup__input-name');
 const profilePopupProfessionInput = document.querySelector('.popup__input-profession');
 const popupClosed = document.querySelector('.popup__closed-description');
+const popupClosedPlace = document.querySelector('.popup__closed-place');
+const popupClosedImg = document.querySelector('.popup__closed-img');
 const profileButton = document.querySelector('.profile__button');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
-const formElement = document.querySelector('.popup__form-description');
+const formElementDescription = document.querySelector('.popup__form-description');
+const formElementImg =  document.querySelector('.popup__form-img');
 const elementsContainer = document.querySelector('.elements__items');
 const popupDescription = document.querySelector('.popup_type_description');
-const popupClosedPlace = document.querySelector('.popup__closed-place');
-const formElementImg =  document.querySelector('.popup__form-img');
+const popupPlace = document.querySelector('.popup_type_place');
 const placePopupTitleInput = document.querySelector('.popup__input-title'); 
 const placePopupLinksInput = document.querySelector('.popup__input-link'); 
-const popupPlace = document.querySelector('.popup_type_place');
 const profileAddButton = document.querySelector('.profile__add-button');
-/*const popupPicture = document.querySelector('.popup_type_picture');*/
-/*const popupPicturePhoto = popupPicture.querySelector('.popup__photo');
-const popupPictureTitle = popupPicture.querySelector('.popup__title-photo');*/
-const popupClosedImg = document.querySelector('.popup__closed-img');
-/*const template = document.querySelector('#elements__item-template');*/
-const buttonOfPopup = document.querySelector('.popup__save');
 
-/*const createCard = (cardLink, cardName) => {
-  const card = template.content.cloneNode(true);
-  const elementImgOfCard = card.querySelector('.element__img');
-  elementImgOfCard.src = cardLink;
-  elementImgOfCard.alt = cardName;
-  card.querySelector('.element__title').textContent  = cardName;
-  card.querySelector('.element__trash').addEventListener('click', (evt) => {
-     evt.target.closest('.element__item').remove(); 
-  })
-  card.querySelector('.element__like').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('element__like_dark'); 
- })
- card.querySelector('.element__img').addEventListener('click', (evt) => {
-  popupPicturePhoto.src = cardLink;
-  popupPicturePhoto.alt = cardName;
-  popupPictureTitle.textContent = cardName;
-  openPopup(popupPicture);
- });
-  return card;
-}
-*/
-const createCard = (data, cardSelector) => {  //функция создание карточке из template
+
+const createCard = (data, cardSelector) => {
   const card = new Card(data, cardSelector);
   elementsContainer.prepend(card.generateCard());
 }
 
-const addCard = (cardLink, cardName) => {                         //функция добавления карточки пользователем
+
+const addCard = (cardName, cardLink) => {
   const data = {
     cardName,
     cardLink
@@ -62,118 +36,86 @@ const addCard = (cardLink, cardName) => {                         //функци
 }
 
 
-initialCards.forEach((item) => {                            //Добавление карточек из initialCards
+initialCards.forEach((item) => {
   createCard(item, '#elements__item-template');
 });
 
-const addNewImg = (evt) => {   //добавление новой карточки пользователем
+
+const validateOfDescription  = () => {
+  const validOfDescription = new FormValidator(validation, formElementDescription);
+  validOfDescription.enableValidation();
+  validOfDescription.hideErrors();
+  validOfDescription.disableSubmitButton();
+}
+ 
+
+const validateOfImg = () => {
+  const validOfImg = new FormValidator(validation, formElementImg);
+  validOfImg.enableValidation();
+  validOfImg.hideErrors();
+  validOfImg.disableSubmitButton();
+}
+
+
+const addNewImg = (evt) => {
   evt.preventDefault();
   const cardLink = placePopupLinksInput.value;
   const cardName = placePopupTitleInput.value;
-  addCard(cardLink, cardName);
+  addCard(cardName, cardLink);
   closePopup(popupPlace); 
-  formElementImg.reset();
-  
-  validateOfImg();
 }
 
 
-
-/*
-export const closePopupEsc = (evt) => {
-  const openPopup = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(openPopup); 
-  } 
-}*/
-const validateOfDescription  = () => {
-const validOfDescription = new FormValidator(validation, formElement);   //Валидация для формы описания
-validOfDescription.enableValidation();
-validOfDescription.hideErrors();
-}
-
-const validateOfImg = () =>{
-const validOfImg = new FormValidator(validation, formElementImg);  //Валидация для формы картинки
-validOfImg.enableValidation();
-validOfImg.hideErrors()
-}
-
-/*const  hideErrors = () = {
-  formList.forEach((form) => {
-    const newElement = new FormValidator(validationSettings, form);
-    newElement.clearValidation();
-  })
-};*/
-
-
-/*initialCards.forEach((card) => {
-  addCard(card.link, card.name);
-})*/
-
-
-
-/*const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupEsc);
-}*/
-/*
-const closePopup = (popup) => { 
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEsc);
-  formElementImg.reset();
-  validOfDescription.hideErrors();
-  validOfImg.hideErrors();
-}
-*/
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
   profileName.textContent = profilePopupNameInput.value;
   profileDescription.textContent = profilePopupProfessionInput.value;
-  closePopup(popupDescription); 
-/*  validOfImg.hideErrors();
-  validOfDescription.hideErrors();*/
+  closePopup(popupDescription);
 }
 
 
-
-const closePopupOverlay = (evt) => {                   //функция закрытия вне зоны
+const closePopupOverlay = (evt) => {
   if (evt.target === evt.currentTarget) {
     closePopup(evt.target);
   }
 }
 
+
 profileButton.addEventListener('click', () => {
   profilePopupNameInput.value  = profileName.textContent;
   profilePopupProfessionInput.value = profileDescription.textContent;
   openPopup(popupDescription);
-  /*validateOfImg();*/
+  validateOfDescription();
 });
 
-formElement.addEventListener('submit', handleFormSubmit); 
+
+formElementDescription.addEventListener('submit', handleFormSubmit);
+
+
 popupClosed.addEventListener('click', () => {
   closePopup(popupDescription);
 });
 
+
 profileAddButton.addEventListener('click', () => {
   openPopup(popupPlace);
-  const button = popupPlace.querySelector('.popup__save');
   validateOfImg();
-}); 
-
-formElementImg.addEventListener('submit', addNewImg);    //событие создание картинкис названием
-popupClosedPlace.addEventListener('click', () => {
-  closePopup(popupPlace);
-  validOfImg.hideErrors();
-  validOfDescription.hideErrors();
 });
 
-popupClosedImg.addEventListener('click', () => {        //событие по закрытию на крестик увеличенного изображения   
+
+formElementImg.addEventListener('submit', addNewImg);
+
+
+popupClosedPlace.addEventListener('click', () => {
+  closePopup(popupPlace);
+});
+
+
+popupClosedImg.addEventListener('click', () => {
   closePopup(popupPicture);
 });
 
-popupDescription.addEventListener('click', closePopupOverlay);  //событие по закртию Наименования вне зоны
-popupPlace.addEventListener('click', closePopupOverlay);          //событие по закртию Картинки  вне зоны
-popupPicture.addEventListener('click', closePopupOverlay);        //событие по закртию Увеличенной картинки вне зоны
 
-/*enableValidation(validation);*/
-
+popupDescription.addEventListener('click', closePopupOverlay);
+popupPlace.addEventListener('click', closePopupOverlay);
+popupPicture.addEventListener('click', closePopupOverlay);

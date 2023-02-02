@@ -18,9 +18,7 @@ const closePopupEsc = (evt) => {
 const closePopup = (popup) => { 
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
-  /*formElementImg.reset();*/
- /* validOfDescription.hideErrors();
-  validOfImg.hideErrors();*/
+  document.querySelector('.popup__form-img').reset();
 }
 
-export {openPopup, closePopupEsc, closePopup, popupPicture, popupPicturePhoto, popupPictureTitle};
+export {openPopup, closePopup, popupPicture, popupPicturePhoto, popupPictureTitle};
