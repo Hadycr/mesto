@@ -27,10 +27,10 @@ const createCard = (data, cardSelector) => {
 }
 
 
-const addCard = (cardName, cardLink) => {
+const addCard = (name, link) => {
   const data = {
-    cardName,
-    cardLink
+    name,
+    link
   };
   createCard(data, '#elements__item-template');
 }
@@ -59,9 +59,9 @@ const validateOfImg = () => {
 
 const addNewImg = (evt) => {
   evt.preventDefault();
-  const cardLink = placePopupLinksInput.value;
-  const cardName = placePopupTitleInput.value;
-  addCard(cardName, cardLink);
+  const link = placePopupLinksInput.value;
+  const name = placePopupTitleInput.value;
+  addCard(name, link);
   closePopup(popupPlace); 
 }
 
