@@ -1,4 +1,4 @@
-import Card from './Card.js';
+import AllCard from './AllCard.js';
 import {FormValidator, validation} from './FormValidator.js';
 import {initialCards} from './cards.js';
 import {openPopup, closePopup, popupPicture} from './utils.js';
@@ -22,7 +22,7 @@ const profileAddButton = document.querySelector('.profile__add-button');
 
 
 const createCard = (data, cardSelector) => {
-  const card = new Card(data, cardSelector);
+  const card = new AllCard(data, cardSelector);
   elementsContainer.prepend(card.generateCard());
 }
 
