@@ -1,6 +1,6 @@
 import {openPopup, popupPicture, popupPicturePhoto, popupPictureTitle} from './utils.js';
 
-class AllCard {
+class Card {
   constructor (data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
@@ -55,4 +55,4 @@ class AllCard {
   }
 }
 
-export default AllCard;
+export default Card;
