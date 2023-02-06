@@ -20,42 +20,28 @@ const placePopupTitleInput = document.querySelector('.popup__input-title');
 const placePopupLinksInput = document.querySelector('.popup__input-link'); 
 const profileAddButton = document.querySelector('.profile__add-button');
 
-
 const createCard = (data, cardSelector) => {
   const card = new Card(data, cardSelector);
-  elementsContainer.prepend(card.generateCard());
+  return card
 }
-
 
 const addCard = (name, link) => {
   const data = {
     name,
     link
-  };
-  createCard(data, '#elements__item-template');
+  };  
+  elementsContainer.prepend(createCard(data, '#elements__item-template').generateCard());
 }
-
 
 initialCards.forEach((item) => {
-  createCard(item, '#elements__item-template');
+  addCard(item.name, item.link);
 });
 
+const validatorEditProfile = new FormValidator(validation, formElementDescription);
+validatorEditProfile.enableValidation();
 
-const validateOfDescription  = () => {
-  const validOfDescription = new FormValidator(validation, formElementDescription);
-  validOfDescription.enableValidation();
-  validOfDescription.hideErrors();
-  validOfDescription.disableSubmitButton();
-}
- 
-
-const validateOfImg = () => {
-  const validOfImg = new FormValidator(validation, formElementImg);
-  validOfImg.enableValidation();
-  validOfImg.hideErrors();
-  validOfImg.disableSubmitButton();
-}
-
+const validatorAddCard = new FormValidator(validation, formElementImg);
+validatorAddCard.enableValidation();
 
 const addNewImg = (evt) => {
   evt.preventDefault();
@@ -65,14 +51,12 @@ const addNewImg = (evt) => {
   closePopup(popupPlace); 
 }
 
-
-const handleFormSubmit = (evt) => {
+const submitEditProfileForm = (evt) => {
   evt.preventDefault();
   profileName.textContent = profilePopupNameInput.value;
   profileDescription.textContent = profilePopupProfessionInput.value;
   closePopup(popupDescription);
 }
-
 
 const closePopupOverlay = (evt) => {
   if (evt.target === evt.currentTarget) {
@@ -80,41 +64,35 @@ const closePopupOverlay = (evt) => {
   }
 }
 
-
 profileButton.addEventListener('click', () => {
   profilePopupNameInput.value  = profileName.textContent;
   profilePopupProfessionInput.value = profileDescription.textContent;
   openPopup(popupDescription);
-  validateOfDescription();
+  validatorEditProfile.hideErrors();
+  validatorEditProfile.disableSubmitButton();
 });
 
-
-formElementDescription.addEventListener('submit', handleFormSubmit);
-
+formElementDescription.addEventListener('submit', submitEditProfileForm);
 
 popupClosed.addEventListener('click', () => {
   closePopup(popupDescription);
 });
 
-
 profileAddButton.addEventListener('click', () => {
   openPopup(popupPlace);
-  validateOfImg();
+  validatorAddCard.hideErrors();
+  validatorAddCard.disableSubmitButton();
 });
 
-
 formElementImg.addEventListener('submit', addNewImg);
-
 
 popupClosedPlace.addEventListener('click', () => {
   closePopup(popupPlace);
 });
 
-
 popupClosedImg.addEventListener('click', () => {
   closePopup(popupPicture);
 });
-
 
 popupDescription.addEventListener('click', closePopupOverlay);
 popupPlace.addEventListener('click', closePopupOverlay);

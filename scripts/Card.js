@@ -38,16 +38,16 @@ class Card {
       this._addLike();
     })
 
-    const cardImage = this._element.querySelector('.element__img');
-    cardImage.addEventListener('click', () => {
+    this._elementImg.addEventListener('click', () => {
       this._openPopup();
     })
   }
 
   generateCard() {
     this._element = this._getTemplate();
-    this._element.querySelector('.element__img').src = this._link;
-    this._element.querySelector('.element__img').alt = this._name;
+    this._elementImg = this._element.querySelector('.element__img');
+    this._elementImg.src = this._link;
+    this._elementImg.alt = this._name;
     this._element.querySelector('.element__title').textContent =  this._name;
     this._setEventListeners();
 
