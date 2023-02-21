@@ -1,4 +1,4 @@
-
+/*
 const popupPicture = document.querySelector('.popup_type_picture');
 const popupPicturePhoto = popupPicture.querySelector('.popup__photo');
 const popupPictureTitle = popupPicture.querySelector('.popup__title-photo');
@@ -21,4 +21,4 @@ const closePopup = (popup) => {
   document.querySelector('.popup__form-img').reset();
 }
 
-export {openPopup, closePopup, popupPicture, popupPicturePhoto, popupPictureTitle};
+export {openPopup, closePopup, */

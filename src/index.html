@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <div class="page__container">
@@ -17,11 +16,11 @@
           <div class="profile__avatar"></div>
           <div class="profile__profile-info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__button button" type="button"><img class="profile__pen" src="./img/pen.svg" alt="Кнопка редактирования"></button>
+            <button class="profile__button button" type="button"><img class="profile__pen" src="<%=require('./img/pen.svg')%>" alt="Кнопка редактирования"></button>
             <p class="profile__description">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button button" type="button"><img class="profile__plus" src="./img/plus.svg" alt="Кнопка добавления"></button> 
+        <button class="profile__add-button button" type="button"><img class="profile__plus" src="<%=require('./img/plus.svg')%>" alt="Кнопка добавления"></button> 
       </section>
       <section class="elements">
         <ul class="elements__items"></ul>     
@@ -42,7 +41,7 @@
           </label>
           <label class="popup__label">
             <input class="popup__input popup__input-profession popup__input_type_profession" id="profession"
-            placeholder="Описание" value="" name="profession" minlength="2" maxlength="200" required>
+            placeholder="Описание" value="" name="description" minlength="2" maxlength="200" required>
             <span class="profession-error popup__error"></span>
           </label>
           <button class="popup__save popup__save_disabled button" type="submit">Сохранить</button>
@@ -56,12 +55,12 @@
         <form class="popup__form popup__form-img" method="get" name="form" novalidate>
           <label class="popup__label">
             <input class="popup__input popup__input-title popup__input_type_name" id="title" 
-            placeholder="Название" value="" type="text" name="title" minlength="2" maxlength="30" required>
+            placeholder="Название" value="" type="text" name="name" minlength="2" maxlength="30" required>
             <span class="title-error popup__error"></span>
           </label>
           <label class="popup__label">
             <input class="popup__input popup__input-link popup__input_type_profession" id="description" 
-            placeholder="Ссылка на картинку" value="" name="description" type="url" required>
+            placeholder="Ссылка на картинку" value="" name="link" type="url" required>
             <span class="description-error popup__error"></span>
           </label>
           <button class="popup__save popup__save_disabled button" type="submit">Создать</button>
@@ -88,6 +87,5 @@
       </div>
     </li>
   </template>
-  <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

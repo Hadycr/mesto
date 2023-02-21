@@ -1,13 +1,4 @@
-const validation = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__save_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-}; 
-
-class FormValidator {
+export default class FormValidator {
   constructor(validation, formElement) {
     this._validation = validation;
     this._formElement = formElement;
@@ -78,5 +69,3 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-export {FormValidator, validation};
