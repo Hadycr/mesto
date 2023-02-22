@@ -5,7 +5,7 @@ export const validation = {
   inactiveButtonClass: 'popup__save_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
-}; 
+};
 
 export const initialCards = [
   {
@@ -35,26 +35,12 @@ export const initialCards = [
 ];
 
 export const elementsContainer = document.querySelector('.elements__items');
-export const popupClosed = document.querySelector('.popup__closed');
-
-
-
 export const profilePopupNameInput = document.querySelector('.popup__input-name');
 export const profilePopupProfessionInput = document.querySelector('.popup__input-profession');
-//const popupClosed = document.querySelector('.popup__closed-description');
-const popupClosedPlace = document.querySelector('.popup__closed-place');
-const popupClosedImg = document.querySelector('.popup__closed-img');
 export const profileButton = document.querySelector('.profile__button');
 export const profileName = '.profile__name';
 export const profileDescription = '.profile__description';
 export const formElementDescription = document.querySelector('.popup__form-description');
 export const formElementImg =  document.querySelector('.popup__form-img');
-
-//const popupDescription = document.querySelector('.popup_type_description');
-//export const popupPlace = document.querySelector('.popup_type_place');
-const placePopupTitleInput = document.querySelector('.popup__input-title'); 
-const placePopupLinksInput = document.querySelector('.popup__input-link'); 
 export const profileAddButton = document.querySelector('.profile__add-button');
-
-//-------------
-export const popupPicture = document.querySelector('.popup_type_picture');
+export const template = '#elements__item-template';

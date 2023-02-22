@@ -1,4 +1,4 @@
-class Section {
+export default class Section {
   constructor({data, renderer}, selector) {
     this._initialCard = data;
     this._renderer = renderer;
@@ -15,5 +15,3 @@ class Section {
     this._container.prepend(element);
   }
 }
-
-export default Section

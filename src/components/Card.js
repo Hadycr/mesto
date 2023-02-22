@@ -17,7 +17,7 @@ export default class Card {
   }
 
   _addLike() {
-    this._likeButton.classList.toggle('element__like_dark'); 
+    this._likeButton.classList.toggle('element__like_dark');
   }
 
   _setEventListeners() {
@@ -31,7 +31,7 @@ export default class Card {
       this._addLike();
     })
 
-    this._elementImg.addEventListener('click', this._handleCardClick)
+    this._elementImg.addEventListener('click', this._handleCardClick);
   }
 
   generateCard() {

@@ -7,7 +7,7 @@ import FormValidator from '../components/FormValidator.js';
 import {initialCards, elementsContainer,formElementDescription,
   formElementImg, profileDescription, profileName, profileButton, 
   profilePopupNameInput, profilePopupProfessionInput, 
-  profileAddButton,validation} from '../utils/constats.js'
+  profileAddButton,validation,template} from '../utils/constats.js'
 import './index.css';
 
 const validatorEditProfile = new FormValidator(validation, formElementDescription);
@@ -26,58 +26,29 @@ const createCard = (data, cardSelector) => {
   return card.generateCard()
 }
 
-const newCard = new Section({       
+const newCard = new Section({
   data: initialCards,
   renderer: (item) => {
-    const cards = createCard(item, '#elements__item-template');
+    const cards = createCard(item, template);
     newCard.addItem(cards);
   }
 },elementsContainer);
 
 newCard.renderCard();
 
-/*const popupAddCardForm = new PopupWithForm('.popup_cards', (item) => {
-
-	cardElementList.addItem(createdCard({ name: item.inputNameCard, link: item.inputUrlCard }));
-	popupAddCardForm.close();
-});
-*/
-
-
-//не рабрает карточка добовляется но без рисунка
-const popupFormImg = new PopupWithForm('.popup_type_place', 
-(item) => {
-const value = {name: item.name, link: item.link}
- newCard.addItem(createCard(value, '#elements__item-template'));
- console.log(item)
+const popupFormImg = new PopupWithForm('.popup_type_place', (item) => {
+  const value = {name: item.name, link: item.link};
+  newCard.addItem(createCard(value, template));
 });
 popupFormImg.setEventListeners();
 
+const userInfo = new UserInfo(profileName, profileDescription);
 
-const userInfo = new UserInfo(
-  profileName, 
-  profileDescription);
-
-
-
-// не рабоатет подставление данных при самбите
-/*const formData = (data) => {
-  userInfo.setUserInfo(data.name, data.description);
-}*/
-/*
-function formValues(data) {
-	userInfo.setUserInfo({ name: data.inputName, info: data.inputAbout });
-	popupEditProfileForm.close();
-}
-*/
 const popupFormProfile = new PopupWithForm('.popup_type_description', (formData) => {
   userInfo.setUserInfo(formData);
-  console.log(formData)
 });
 popupFormProfile.setEventListeners();
 
-
-//правильная открытие попапа профиля - рабоатет
 profileButton.addEventListener('click', () => {
   popupFormProfile.open();
   const user = userInfo.getUserInfo();
@@ -89,7 +60,6 @@ profileButton.addEventListener('click', () => {
 
 profileAddButton.addEventListener('click', () => {
   popupFormImg.open();
-
   validatorAddCard.hideErrors();
   validatorAddCard.disableSubmitButton();
 });
