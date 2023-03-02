@@ -7,4 +7,5 @@
 
 Проект сайта разбит на модули, применен ООП, создан отдельно Класс Создания карточки(Card) и Касс валидации формы (FormValidator).
 
-GitHub Pages: https://hadycr.github.io/mesto/index.html 
+
+GitHub Pages: https://hadycr.github.io/mesto/

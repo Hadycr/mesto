@@ -1,8 +1,10 @@
-.profile__avatar {
+.profile__avatar  {
+  position: relative;
+  margin: 0;
   width: 120px;
   height: 120px;
-  background-image: url(../../../img/kusto.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
   border-radius: 50%;
+  object-fit: cover;
+  padding: 0;
+  opacity: 1;
 }

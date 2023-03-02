@@ -1,12 +1,11 @@
 export default class Section {
-  constructor({data, renderer}, selector) {
-    this._initialCard = data;
+  constructor({renderer}, selector) {
     this._renderer = renderer;
     this._container = selector;
   }
 
-  renderCard() {
-    this._initialCard.forEach((item) => {
+  renderCard(data) {
+    data.reverse().forEach((item) => {
       this._renderer(item);
     })
   }
